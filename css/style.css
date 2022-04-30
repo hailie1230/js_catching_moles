@@ -13,7 +13,13 @@ button {
 /* img {
   width: 100%;
 } */
-
+.hammer {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  transform: translate(-50%,-50%);
+  z-index: 2;
+}
 .game__wrap{
   background: center /cover no-repeat url(../img/bg.jpg);
   max-width: 920px;
@@ -42,6 +48,8 @@ button {
   height: 60px;
   font-size: 30px;
   cursor: pointer;
+  position: relative;
+  z-index: 3;
 }
 .game__timer {
   background-color: #fff;
@@ -56,8 +64,17 @@ button {
   align-items: center;
   visibility:  hidden;
 }
-.game__timer img {
+.clock {
   width: 40px;
+  animation: clock 1s infinite;
+}
+@keyframes clock {
+  0%   {transform: rotate(20deg);}
+  50%  {transform: rotate(-20deg);}
+  100% {transform: rotate(20deg);}
+}
+.clock.stop {
+  animation: none;
 }
 .game__timer span {
   display: inline-block;
@@ -124,6 +141,8 @@ button {
   align-items: center;
   flex-direction: column;
   transform: translateY(-300px);
+  position: relative;
+  z-index: 3;
 }
 .pop-up__refresh {
   background-color: #ffcc80;
@@ -144,11 +163,15 @@ button {
 .flower {
   width: 100px;
   cursor: pointer;
+  position: relative;
+  z-index: 1;
 }
 .mole {
   width: 60px;
   transition: transform 300ms ease-in;
   cursor: pointer;
+  position: relative;
+  z-index: 2;
 }
 .mole:hover {
   transform: scale(1.2);

@@ -14,10 +14,17 @@ const gameStartBtn = document.querySelector('.game__start__btn');
 const startPopup = document.querySelector('.game__start__pop-up');
 const timerBox = document.querySelector('.game__timer');
 const gameTimer = document.querySelector('.timer');
+const clock = document.querySelector('.clock');
 const scoreBox = document.querySelector('.game__score');
 const gamePopup = document.querySelector('.pop-up');
 const gamePopupMsg = document.querySelector('.pop-up__msg');
 const gamePopupRefresh = document.querySelector('.pop-up__refresh');
+
+const moleSound = new Audio('./sound/mole_pull.mp3');
+const alertSound = new Audio('./sound/alert.wav');
+const bgSound = new Audio('./sound/bg.mp3');
+const flowerSound = new Audio('./sound/flower_pull.mp3');
+const winSound = new Audio('./sound/game_win.mp3');
 
 let started = false;
 let score = 0;
@@ -52,17 +59,28 @@ function startGame (){
   showTimerAndScore();
   hiddenStartPopup();
   startGameTimer();
+  clock.classList.remove('stop');
+  playSound(bgSound);
 };
 function stopGame (){
   started = false;
   stopGameTimer();
   hideGameButton();
-  showPopUpWithText('REPLAY?🧚🏻‍♀️')
+  showPopUpWithText('REPLAY?🧚🏻‍♀️');
+  playSound(alertSound);
+  stopSound(bgSound);
 };
 function finishGame(win){
   started = false;
   hideGameButton();
+  clock.classList.add('stop');
+  if(win){
+    playSound(winSound);
+  } else{
+    playSound(flowerSound);
+  }
   stopGameTimer();
+  stopSound(bgSound);
   showPopUpWithText(win? 'YOU WIN🥳' : 'YOU LOST😢')
 }
 
@@ -123,6 +141,7 @@ function onFieldClick(e){
     //mole
     target.remove();
     score++;
+    playSound(moleSound);
     updateScroeBox();
     if(score == MOLE_COUNT){
       finishGame(true);
@@ -146,6 +165,17 @@ function gameInit(){
   addImgItem('flower', FLOWER_COUNT_IRIS, 'img/flower_iris.png');
   addImgItem('mole', MOLE_COUNT, 'img/mole.png');
 };
+
+function playSound(sound){
+  sound.currentTime = 0;
+  sound.play();
+}
+function stopSound(sound){
+  sound.pause();
+}
+function updateScroeBoard(){
+  gameScore.innerText = CARROT_COUNT - score;
+}
 
 function addImgItem(className, count, imgPath){
   const x1 = 0;
@@ -174,3 +204,12 @@ function randomNumber(min, max){
 };
 
 
+const hammer = document.querySelector('.hammer');
+
+document.addEventListener('mousemove', (e) => {
+  const x = e.clientX;
+  const y = e.clientY;
+  
+  hammer.style.left = `${x}px`;
+  hammer.style.top = `${y}px`;
+})
