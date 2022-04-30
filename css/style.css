@@ -181,6 +181,11 @@ button {
 .hide {
   display: none;
 }
+@media screen and (max-width: 990px) { 
+  .game__wrap {
+    height: 500px;
+  }
+}
 @media screen and (max-width: 800px) { 
   .hammer {display: none;}
 }
