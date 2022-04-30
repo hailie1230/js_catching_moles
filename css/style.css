@@ -183,7 +183,7 @@ button {
 }
 @media screen and (max-width: 990px) { 
   .game__wrap {
-    height: 500px;
+    height: 520px;
     margin: 20px auto;
   }
 }
