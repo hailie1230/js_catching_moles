@@ -45,6 +45,7 @@ function gameStart(){
 
 };
 
+// game진행 후 : stop 버튼 클릭시 -> replay popup - replay 버튼 
 gamePopupRefresh.addEventListener('click', gameReStart);
 function gameReStart(){
   gameStart();
@@ -69,6 +70,7 @@ function stopGame (){
   showPopUpWithText('REPLAY?🧚🏻‍♀️');
   playSound(alertSound);
   stopSound(bgSound);
+  clock.classList.add('stop');
 };
 function finishGame(win){
   started = false;
