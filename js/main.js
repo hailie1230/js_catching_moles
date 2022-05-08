@@ -205,7 +205,7 @@ function randomNumber(min, max){
   return Math.random() * (max - min) + min;
 };
 
-
+// 마우스 따라다니는 망치 아이콘 
 const hammer = document.querySelector('.hammer');
 
 document.addEventListener('mousemove', (e) => {
