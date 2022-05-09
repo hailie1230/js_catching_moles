@@ -10,7 +10,7 @@
 - 나와있는 두더지를 모두 클릭하면 성공!
 
 ![02](https://user-images.githubusercontent.com/66510673/167301649-57a96451-83c2-4a53-929e-cf5dddfd3d01.gif)
-- 실수로 아름다운 꽃을 클릭하면 실패!
+- 실수로 꽃을 클릭하면 실패!
 
 ![03-2](https://user-images.githubusercontent.com/66510673/167301733-2f9b4163-611e-4972-b988-f758e2733292.gif)
 - 실패 시 Replay 팝업의 재 실행 버튼을 클릭하면 게임이 재 실행됩니다.
